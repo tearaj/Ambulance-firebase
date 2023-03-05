@@ -12,11 +12,11 @@ db.reference("/Signal")
 
 
 #used by the controller on the traffic lights to control the signal
-def update_status_manually(id,color):
+def update_status_manually(id,signal_status):
     try:
         ref=db.reference(f"/Signal/Signal_{id}")
 
-        stat={"Status":color}
+        stat={"Status":signal_status}
         ref.update(stat)
     except TransportError:
         print("Connection problem")
@@ -30,7 +30,7 @@ def get_signal_status_by_id(id:int):
 # def update_status_to_red(id):
 #     try:
 #         ref=db.reference(f"/Signal/Signal_{id}")
-#         stat={"Status":colors.red}
+#         stat={"Status":signal_status.red}
 #         m=ref.update(stat)
 #         print("update returns ",m)
 #     except TransportError:
@@ -40,7 +40,7 @@ def get_signal_status_by_id(id:int):
 # def update_status_to_green(id):
 #     try:
 #         ref=db.reference(f"/Signal/Signal_{id}")
-#         stat={"Status":colors.red}
+#         stat={"Status":signal_status.red}
 #         m=ref.update(stat)
 #         print("update returns ",m)
 #     except TransportError:
@@ -52,9 +52,9 @@ def get_signal_status_by_id(id:int):
 #         ref=db.reference(f"/Signal/Signal_{id}")
 #         prev_status= ref.get()
 #         stat={}
-#         if(prev_status['Status'] == colors.red): stat = {"Status":colors.yellow}
-#         elif(prev_status['Status'] == colors.yellow): stat =  {"Status":colors.green}
-#         elif(prev_status['Status'] == colors.green): stat = {"Status":colors.red}
+#         if(prev_status['Status'] == signal_status.red): stat = {"Status":signal_status.yellow}
+#         elif(prev_status['Status'] == signal_status.yellow): stat =  {"Status":signal_status.green}
+#         elif(prev_status['Status'] == signal_status.green): stat = {"Status":signal_status.red}
 #         elif(prev_status['Status'] == None): 
 #             print("id does not exist")
 #             return
