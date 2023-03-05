@@ -1,6 +1,8 @@
 from enum import Enum
-import pydantic
-class colors(str, Enum):
-    red = "Red"
-    yellow = "Yellow"
-    green = "Green"
+class signal_value(str, Enum):
+    stop = "Stop"
+    wait = "Wait"
+    straight = "Straight"
+    right = "Right"
+    left = "Left"
+    u_turn = "U-Turn"

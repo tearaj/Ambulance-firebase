@@ -3,7 +3,7 @@ from firebase_admin import credentials, db
 from enum import Enum
 from google.auth.exceptions import TransportError #to throw connection error
 cred = credentials.Certificate("../project_code/firebase_db/firebase_sdk.json")
-from models import colors
+
 firebase_admin.initialize_app(cred,{
     "databaseURL":"https://signals-b2e76-default-rtdb.firebaseio.com"
 })
@@ -15,6 +15,7 @@ db.reference("/Signal")
 def update_status_manually(id,color):
     try:
         ref=db.reference(f"/Signal/Signal_{id}")
+
         stat={"Status":color}
         ref.update(stat)
     except TransportError:

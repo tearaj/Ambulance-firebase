@@ -1,6 +1,6 @@
 import firebase_admin
 from firebase_admin import credentials, db
-from models import colors
+from models import signal_value
 cred = credentials.Certificate("project_code/firebase/firebase_sdk.json")
 firebase_admin.initialize_app(cred,{
     "databaseURL":"https://signals-b2e76-default-rtdb.firebaseio.com"
@@ -11,9 +11,9 @@ database=db.reference('/Signal')
 signals={}
 for i in range(10):
     status = (i%3)
-    if(status==0): status=colors.red
-    elif(status==1): status=colors.yellow
-    elif(status==2): status=colors.green
+    if(status==0): status=signal_value.red
+    elif(status==1): status=signal_value.yellow
+    elif(status==2): status=signal_value.green
     signal_details = {f"Signal_{i}":{"Status":status}}
     signals.update(signal_details)
 

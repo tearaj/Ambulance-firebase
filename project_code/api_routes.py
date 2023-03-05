@@ -1,13 +1,13 @@
 from fastapi import FastAPI
 from update_signal import update_status_manually
-from models import colors
+from models import signal_value
 from update_signal import update_status_manually, get_signal_status_by_id
 import uvicorn
 app=FastAPI()
 
 @app.post("/api/v1/signals/{id}")
-def set_signal_status(id: int, color: colors):
-    update_status_manually(id,color)
+def set_signal_status(id: int, signal_status: signal_value):
+    update_status_manually(id,signal_status)
 
 @app.get("/api/v1/signals/{id}")
 def get_signal_status(id:int):
