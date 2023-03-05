@@ -13,7 +13,7 @@ def set_signal_status(id: int, signal_status: signal_value):
 def get_signal_status(id:int):
     return get_signal_status_by_id(id)
 
-
+#change host and port values here to expose api
 if __name__ == "__main__":
     uvicorn.run("api_routes:app", host="127.0.0.1", port=8000, log_level="info", reload= True)
 
