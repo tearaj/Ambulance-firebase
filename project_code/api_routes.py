@@ -6,11 +6,11 @@ import uvicorn
 app=FastAPI()
 
 @app.post("/api/v1/signals/{id}")
-def set_signal_status(id: int, signal_status: signal_value):
+async def set_signal_status(id: int, signal_status: signal_value):
     update_status_manually(id,signal_status)
 
 @app.get("/api/v1/signals/{id}")
-def get_signal_status(id:int):
+async def get_signal_status(id:int):
     return get_signal_status_by_id(id)
 
 #change host and port values here to expose api
